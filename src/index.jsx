@@ -1,0 +1,10 @@
+import React from "react"
+import ReactDOM from "react-dom"
+
+import App from "./App"
+// import App from "./hooks/useState"
+// import App from "./hooks/useEffect"
+
+const root = document.getElementById("root")
+
+ReactDOM.render(<App />, root)
