@@ -7,6 +7,7 @@ import App from "./App"
 // import App from "./refs/refClassComponent"
 // import App from "./refs/refFunctionComponent"
 // import App from "./refs/childRefs"
+// import App from "./component-lifecycle"
 
 const root = document.getElementById("root")
 
