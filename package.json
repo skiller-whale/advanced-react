@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node start.js",
     "build": "cross-env NODE_ENV=production webpack -p",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,8 @@
     "semi": false
   },
   "jest": {
+    "testURL": "http://localhost/",
+    "setupTestFrameworkScriptFile": "./setupTests.js",
     "moduleFileExtensions": [
       "js",
       "jsx"
@@ -27,10 +30,23 @@
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.jsx$": "babel-jest",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mock__/fileTransformer.js"
-    }
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/testing/__mock__/fileTransformer.js"
+    },
+    "collectCoverageFrom": [
+      "src/testing/drive-safe-app/**/*.{js,jsx}",
+      "!src/testing/drive-safe-app/api.js",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcovonly",
+      "text",
+      "clover"
+    ]
   },
   "devDependencies": {
+    "@sheerun/mutationobserver-shim": "^0.3.3",
+    "@testing-library/react": "^10.4.3",
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.4",
     "babel-loader": "^7.1.5",
@@ -44,6 +60,7 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.4.4",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"
