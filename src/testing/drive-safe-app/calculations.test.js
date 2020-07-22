@@ -12,22 +12,22 @@ import {
 } from "./calculations"
 
 describe("driving score", () => {
-  it("distance 100 incidents 0 -> driving score 100", () => {
+  test("distance 100 incidents 0 -> driving score 100", () => {
     const output = calculateDrivingScore({ distance: 100, incidents: 0 })
     expect(output).toBe(100)
   })
 
-  it("distance 100 incidents 50 -> driving score 50", () => {
+  test("distance 100 incidents 50 -> driving score 50", () => {
     const output = calculateDrivingScore({ distance: 100, incidents: 50 })
     expect(output).toBe(50)
   })
 
-  it("distance 100 incidents 100 -> driving score 0", () => {
+  test("distance 100 incidents 100 -> driving score 0", () => {
     const output = calculateDrivingScore({ distance: 100, incidents: 100 })
     expect(output).toBe(0)
   })
 
-  it("distance 100 incidents 101 -> driving score 0", () => {
+  test("distance 100 incidents 101 -> driving score 0", () => {
     const output = calculateDrivingScore({ distance: 100, incidents: 101 })
     expect(output).toBe(0)
   })
