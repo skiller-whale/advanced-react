@@ -1,4 +1,4 @@
-const API_RESPONSE_DELAY = 1500
+const API_RESPONSE_DELAY = 500
 
 function getRandomInt(min, max) {
   min = Math.ceil(min)

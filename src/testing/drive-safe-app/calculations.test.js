@@ -11,7 +11,7 @@ import {
   calculateDrivingAssessment,
 } from "./calculations"
 
-describe("driving score", () => {
+describe("calculateDrivingScore", () => {
   test("distance 100 incidents 0 -> driving score 100", () => {
     const output = calculateDrivingScore({ distance: 100, incidents: 0 })
     expect(output).toBe(100)
