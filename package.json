@@ -7,7 +7,8 @@
     "start": "cross-env NODE_ENV=development node start.js",
     "build": "cross-env NODE_ENV=production webpack -p",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "serve:build": "serve -s build -l 4000"
   },
   "keywords": [],
   "author": "",
@@ -50,6 +51,7 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.4",
     "babel-loader": "^7.1.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -61,6 +63,7 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.0.0",
+    "serve": "^11.3.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"

@@ -1,7 +1,7 @@
 let newsItemNumber = 0
 
 // NOTE this generates new content on each request
-function todaysNews() {
+function todaysNews(delay = 1500) {
   return new Promise((resolve) => {
     // use set timeout to emulate a delay in the api response
     setTimeout(() => {
@@ -18,7 +18,7 @@ function todaysNews() {
         })
       }
       resolve(generatedNewsItems)
-    }, 1500)
+    }, delay)
   })
 }
 

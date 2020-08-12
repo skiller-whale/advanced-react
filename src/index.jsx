@@ -10,6 +10,7 @@ import App from "./App"
 // import App from "./component-lifecycle"
 // import App from "./testing/drive-safe-app"
 // import App from "./portals"
+// import App from "./suspense"
 
 const root = document.getElementById("root")
 
