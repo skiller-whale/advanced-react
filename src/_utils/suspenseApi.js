@@ -3,7 +3,6 @@ import api from "./api"
 export function fetchTodaysNews() {
   return suspenseWrapper(api.todaysNews(4000))
 }
-
 // apply the suspense API contract to promise
 function suspenseWrapper(promise) {
   let status = "pending"

@@ -5,7 +5,7 @@ export default class InfoButton extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      buttonBoundingRect: {},
+      buttonBoundingRect: null,
     }
     this.onClickButton = this.onClickButton.bind(this)
   }
@@ -17,11 +17,7 @@ export default class InfoButton extends React.Component {
   render() {
     return (
       <div style={{ position: "relative" }}>
-        <button
-          className="btn btn-primary"
-          onClick={this.onClickButton}
-          ref={this.buttonRef}
-        >
+        <button className="btn btn-primary" onClick={this.onClickButton}>
           {this.props.label}
         </button>
         {this.props.popOverDisplayed && (

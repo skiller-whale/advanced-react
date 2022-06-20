@@ -1,6 +1,5 @@
 let liveNewsItems = []
 let liveNewsListener
-
 function startLiveNewsListener(callback) {
   console.log("** live news listener started **")
   liveNewsListener = setInterval(() => {
@@ -21,7 +20,6 @@ function startLiveNewsListener(callback) {
         }
       )
     }
-
     // add an additional news item each request
     const thisNewsItemNumber = liveNewsItems.length + 1
     liveNewsItems.push({
@@ -36,12 +34,10 @@ function startLiveNewsListener(callback) {
     callback(liveNewsItems)
   }, 5000)
 }
-
 function stopLiveNewsListener() {
   console.log("** live news listener stopped **")
   clearInterval(liveNewsListener)
 }
-
 export default {
   startLiveNewsListener,
   stopLiveNewsListener,

@@ -17,9 +17,9 @@ Each trip is given a score between 0 and 100. 100 being the best possible score,
 
 The driving assessment for each trip is derived from the score like this:
 
-| Score Range   | Assessment | Assessment Colour |
-| ------------- | ---------- | ----------------- |
-| 90 to 100     | Very Safe  | green             |
-| 70 to 89      | Safe       | blue              |
-| 30 to 69      | Unsafe     | orange            |
-| 0 to 29       | Dangerous  | red               |
+| Score Range | Assessment | Assessment Colour |
+| ----------- | ---------- | ----------------- |
+| 90 to 100   | Very Safe  | green             |
+| 70 to 89    | Safe       | blue              |
+| 30 to 69    | Unsafe     | orange            |
+| 0 to 29     | Dangerous  | red               |

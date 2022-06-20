@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-
+import { useState } from "react"
 import NewsFeed from "./NewsFeed"
 import Tab from "./Tab"
 
@@ -19,7 +18,6 @@ export default function App() {
       content: () => <div>Gossip Page</div>,
     },
   ]
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">

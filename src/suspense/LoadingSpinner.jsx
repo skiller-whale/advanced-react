@@ -39,5 +39,4 @@ class LoadingSpinner extends React.Component {
     )
   }
 }
-
 export default LoadingSpinner

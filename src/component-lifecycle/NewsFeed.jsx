@@ -1,8 +1,6 @@
 import React from "react"
-
 import api from "../_utils/api"
 import apiListener from "../_utils/apiListener"
-
 import NewsItem from "./NewsItem"
 
 const newsItems = [
@@ -25,7 +23,6 @@ const newsItems = [
       "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at",
   },
 ]
-
 class NewsFeed extends React.Component {
   toggleFavourite(item) {
     if (!this.state.favourites[item.id]) {
@@ -38,10 +35,8 @@ class NewsFeed extends React.Component {
       }))
     } else {
       this.setState((state) => {
-        const {
-          [item.id]: itemToRemove,
-          ...remainingFavourites
-        } = this.state.favourites
+        const { [item.id]: itemToRemove, ...remainingFavourites } =
+          this.state.favourites
         return {
           ...state,
           favourites: remainingFavourites,
@@ -49,26 +44,23 @@ class NewsFeed extends React.Component {
       })
     }
   }
-
   render() {
     // This will need to be replaced with a value from state at some point.
     const favourites = {}
-
     return (
       <div>
         {newsItems.map((item) => (
           <NewsItem
-          key={item.id}
-          {...item}
-          isFavourite={favourites[item.id]}
-          onToggleFavourite={() => {
-            this.toggleFavourite(item)
-          }}
+            key={item.id}
+            {...item}
+            isFavourite={favourites[item.id]}
+            onToggleFavourite={() => {
+              this.toggleFavourite(item)
+            }}
           />
         ))}
       </div>
     )
   }
 }
-
 export default NewsFeed

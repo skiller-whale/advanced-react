@@ -2,10 +2,10 @@ import React from "react"
 
 export default class PopOver extends React.Component {
   render() {
-    const positionStyle = {}
-    positionStyle.left = this.props.buttonBoundingRect.width / 2
-    positionStyle.top = 0
-
+    const positionStyle = {
+      left: this.props.buttonBoundingRect?.width / 2,
+      top: 0,
+    }
     return (
       <div
         style={{

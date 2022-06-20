@@ -1,8 +1,6 @@
-import React, { useState } from "react"
-
+import React from "react"
 import LoadingSpinner from "./LoadingSpinner"
 import TopStory from "./TopStory"
-
 import NewsFeed from "./NewsFeed"
 import Gossip from "./Gossip"
 
@@ -24,7 +22,6 @@ const tabs = [
     },
   },
 ]
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -33,13 +30,11 @@ class App extends React.Component {
     }
     this.setActiveTabIndex = this.setActiveTabIndex.bind(this)
   }
-
   setActiveTabIndex(activeTabIndex) {
     this.setState({
       activeTabIndex,
     })
   }
-
   render() {
     const { setActiveTabIndex } = this
     const { activeTabIndex, newsItems } = this.state
@@ -89,5 +84,4 @@ class App extends React.Component {
     )
   }
 }
-
 export default App

@@ -39,5 +39,4 @@ class NewsItem extends React.Component {
     )
   }
 }
-
 export default NewsItem

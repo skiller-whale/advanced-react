@@ -22,7 +22,6 @@ const theGossip = [
   "Etiam dignissim tellus at ullamcorper euismod. Suspendisse fringilla enim eu ligula bibendum molestie. Ut id lacus at dui rutrum aliquet feugiat non massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In facilisis felis ut rhoncus commodo. Nulla vel orci massa. Mauris lobortis porttitor enim, eu dictum magna posuere a. Morbi finibus neque quis risus laoreet, sit amet dapibus turpis congue. Donec dictum, augue sit amet vulputate finibus, urna nulla porttitor lacus, quis pharetra ex libero et libero. Praesent imperdiet auctor dui, at feugiat orci dapibus nec. Nulla nisi orci, tempus vel tristique at, scelerisque ac est.",
   "Integer neque orci, hendrerit et eleifend auctor, dapibus eu lectus. Vivamus at metus vitae lectus cursus tempus eu pharetra augue. Cras imperdiet, purus nec porta rutrum, erat eros gravida neque, sed pulvinar libero metus et orci. Pellentesque neque justo, ornare sit amet justo non, elementum placerat orci. Sed pretium eu arcu at laoreet. Sed convallis est eu sodales molestie. Nulla facilisi. Vivamus ac vehicula ligula. Nulla consectetur elit quam, ut tincidunt massa posuere sollicitudin. Sed felis urna, suscipit sed justo in, volutpat consectetur nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
 ]
-
 class Gossip extends React.Component {
   render() {
     return (
@@ -35,5 +34,4 @@ class Gossip extends React.Component {
     )
   }
 }
-
 export default Gossip

@@ -15,7 +15,6 @@ export function calculateDrivingLevel({ drivingScore }) {
   }
   return DRIVING_LEVEL_DANGEROUS
 }
-
 export function calculateDrivingScore({ distance, incidents }) {
   const incidentsPerMile = incidents / distance
   if (incidentsPerMile > 1) {
@@ -23,7 +22,6 @@ export function calculateDrivingScore({ distance, incidents }) {
   }
   return Math.round(100 - 100 * incidentsPerMile)
 }
-
 export function calculateDrivingAssessment({ trips = [] }) {
   let tripsCount = 0
   let incidentsCount = 0

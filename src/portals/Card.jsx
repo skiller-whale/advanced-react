@@ -1,5 +1,4 @@
 import React from "react"
-
 import PopOverButton from "./PopOverButton"
 
 const styles = {
@@ -8,7 +7,6 @@ const styles = {
     textShadow: "1px 1px #303132",
   },
 }
-
 export default class Card extends React.Component {
   render() {
     return (

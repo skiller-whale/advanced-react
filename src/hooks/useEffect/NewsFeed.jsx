@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react"
-
+import { useState, useEffect } from "react"
 import api from "../../_utils/api"
 import analytics from "../../_utils/analytics"
-
 import NewsItem from "./NewsItem"
 
 export default function NewsFeed() {
@@ -21,24 +19,24 @@ export default function NewsFeed() {
         "Tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
     },
   ]
-
   function loadData() {
     // TODO: Update newsItems here
   }
-
   function onDismissAll() {
     // TODO: Update newsItems here
   }
-
   function removeNewsItem(itemToRemove) {
-    const newsItemsToKeep = newsItems.filter(item => item!== itemToRemove)
+    const newsItemsToKeep = newsItems.filter((item) => item !== itemToRemove)
     // TODO: Update newsItems here
   }
-
   return (
     <div>
       {newsItems.map((item) => (
-        <NewsItem key={item.id} onDismiss={() => removeNewsItem(item)} {...item}/>
+        <NewsItem
+          key={item.id}
+          onDismiss={() => removeNewsItem(item)}
+          {...item}
+        />
       ))}
       {loading && <span>Loading...</span>}
       {!loading && (

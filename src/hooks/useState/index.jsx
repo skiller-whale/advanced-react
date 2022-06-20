@@ -7,26 +7,22 @@ function LikeButton() {
     </button>
   )
 }
-
 class NewsItem extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       headline: props.initialHeadline,
-      tag: null
+      tag: null,
     }
     this.onHeadlineInputChange = this.onHeadlineInputChange.bind(this)
     this.onTagSelectChange = this.onTagSelectChange.bind(this)
   }
-
   onHeadlineInputChange(event) {
     this.setState({ headline: event.target.value })
   }
-
   onTagSelectChange(event) {
     this.setState({ tag: event.target.value })
   }
-
   render() {
     const tagOptions = ["", "World", "Finance", "Sport", "Gossip"]
     return (
@@ -42,7 +38,10 @@ class NewsItem extends React.Component {
           }}
         ></img>
         <div className="media-body column p-3">
-          <h4>{this.state.headline}  <span className="badge badge-info">{this.state.tag}</span></h4>
+          <h4>
+            {this.state.headline}{" "}
+            <span className="badge badge-info">{this.state.tag}</span>
+          </h4>
           <div className="mb-2">{this.props.content}</div>
           <div>
             <LikeButton />
@@ -50,12 +49,24 @@ class NewsItem extends React.Component {
         </div>
         <div className="card column col-auto p-3">
           <div className="form-group">
-            <input className="form-input" placeholder="Edit Headline" onChange={this.onHeadlineInputChange}/>
+            <input
+              className="form-input"
+              placeholder="Edit Headline"
+              onChange={this.onHeadlineInputChange}
+            />
           </div>
           <div className="form-group">
-            <label className="form-label" htmlFor='tag-select'>Select Tag</label>
-            <select className="form-select ml-2" id='tag-select' onChange={this.onTagSelectChange}>
-              {tagOptions.map(value => <option key={value}>{value}</option>)}
+            <label className="form-label" htmlFor="tag-select">
+              Select Tag
+            </label>
+            <select
+              className="form-select ml-2"
+              id="tag-select"
+              onChange={this.onTagSelectChange}
+            >
+              {tagOptions.map((value) => (
+                <option key={value}>{value}</option>
+              ))}
             </select>
           </div>
         </div>
@@ -63,7 +74,6 @@ class NewsItem extends React.Component {
     )
   }
 }
-
 export default function App() {
   return (
     <div className="container">

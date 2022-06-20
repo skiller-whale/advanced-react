@@ -52,5 +52,4 @@ class TopStory extends React.Component {
     )
   }
 }
-
 export default TopStory

@@ -1,13 +1,11 @@
 import React from "react"
-
 import Card from "./Card"
 
 const planets = [
   {
     id: "planet-mars",
     name: "Mars",
-    img:
-      "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
     distanceFromSun: "227.9 million km",
     additionalInfo:
       "The fourth planet from the Sun and the second-smallest planet in the Solar System, being only larger than Mercury. In English, Mars carries the name of the Roman god of war and is often referred to as the Red Planet.",
@@ -23,8 +21,7 @@ const planets = [
   {
     id: "planet-saturn",
     name: "Saturn",
-    img:
-      "https://solarsystem.nasa.gov/system/stellar_items/image_files/38_saturn_1600x900.jpg ",
+    img: "https://solarsystem.nasa.gov/system/stellar_items/image_files/38_saturn_1600x900.jpg ",
     distanceFromSun: "1.434 billion km",
     additionalInfo:
       "The sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine times that of Earth. It only has one-eighth the average density of Earth",
@@ -38,7 +35,6 @@ const planets = [
       "The second planet from the Sun. It is named after the Roman goddess of love and beauty. As the second-brightest natural object in the night sky after the Moon, Venus can cast shadows and can be, on rare occasion, visible to the naked eye in broad daylight.",
   },
 ]
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -106,5 +102,4 @@ class App extends React.Component {
     )
   }
 }
-
 export default App

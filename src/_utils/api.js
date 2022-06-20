@@ -1,5 +1,4 @@
 let newsItemNumber = 0
-
 // NOTE this generates new content on each request
 function todaysNews(delay = 1500) {
   return new Promise((resolve) => {
@@ -21,7 +20,6 @@ function todaysNews(delay = 1500) {
     }, delay)
   })
 }
-
 // NOTE this returns a fixed set of data
 const fixedNewsItems = []
 let i = 0
@@ -42,5 +40,4 @@ function latestNews() {
     }, 1500)
   })
 }
-
 export default { todaysNews, latestNews }

@@ -1,5 +1,3 @@
-import React from "react"
-
 import { calculateDrivingLevel, calculateDrivingScore } from "../calculations"
 import { drivingLevelDisplay } from "../constants"
 
@@ -67,7 +65,6 @@ function TripRow({ tripNumber, trip, onConfirmTrip }) {
     </tr>
   )
 }
-
 export default function DrivingHistory({ trips, confirmTrip }) {
   return (
     <div style={{ maxWidth: 900 }}>

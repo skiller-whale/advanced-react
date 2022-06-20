@@ -1,7 +1,5 @@
 import React from "react"
-
 import api from "../_utils/api"
-
 import NewsItem from "./NewsItem"
 
 function Loader() {
@@ -46,7 +44,6 @@ function Loader() {
     </div>
   )
 }
-
 class NewsFeed extends React.Component {
   constructor(props) {
     super(props)
@@ -55,7 +52,6 @@ class NewsFeed extends React.Component {
       newsItems: [],
     }
   }
-
   componentDidMount() {
     api.todaysNews().then((newsItems) => {
       this.setState({
@@ -64,7 +60,6 @@ class NewsFeed extends React.Component {
       })
     })
   }
-
   render() {
     if (!this.state.initialised) {
       return <Loader />
@@ -78,5 +73,4 @@ class NewsFeed extends React.Component {
     )
   }
 }
-
 export default NewsFeed

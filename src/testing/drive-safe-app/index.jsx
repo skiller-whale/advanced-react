@@ -1,7 +1,5 @@
 import React, { useState } from "react"
-
 import api from "./api"
-
 import DrivingAssessment from "./DrivingAssessment"
 import DrivingHistory from "./DrivingHistory"
 
@@ -19,7 +17,6 @@ const tabs = [
     ),
   },
 ]
-
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -32,7 +29,6 @@ export default class App extends React.Component {
     this.viewTrips = this.viewTrips.bind(this)
     this.confirmTrip = this.confirmTrip.bind(this)
   }
-
   componentDidMount() {
     api.getTrips().then(({ trips }) => {
       this.setState({
@@ -41,19 +37,16 @@ export default class App extends React.Component {
       })
     })
   }
-
   setActiveTabIndex(index) {
     this.setState({
       activeTabIndex: index,
     })
   }
-
   viewTrips() {
     this.setState({
       activeTabIndex: 1,
     })
   }
-
   confirmTrip(tripId) {
     this.setState((state) => {
       const updatedTrips = state.trips.map((trip) => {
@@ -71,7 +64,6 @@ export default class App extends React.Component {
       }
     })
   }
-
   render() {
     const { activeTabIndex, loadingTrips, trips } = this.state
     const { setActiveTabIndex, viewTrips, confirmTrip } = this
