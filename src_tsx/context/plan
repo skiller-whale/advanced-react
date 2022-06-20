@@ -1,0 +1,35 @@
+Problem it solves: passing data through lots of layers. E.g. locale / UI theme.
+Avoid passing data through every layer with Context API.
+
+Key question: should learner choose between class and functional components, or be instructed to do both?
+Suggested answer: do both. They're different enough that it's useful to have seen how both work.
+
+- exercise: replace multiple levels of props with a use of context API. useContext for a functional component, contextType and using this.context for class components. Check thay they are re-rendered when the context is updated (and that this doesn't get affected by shouldComponentUpdate anywhere in the hierarchy)
+- exercise: updating context by writing a closure in createContext
+- exercise: defaultValues on contexts. Only used when there's no provider.
+  - NB this exercise might be overkill
+- exercise: multiple providers in the same hierarchy. The learner should introduce a new provider that covers part of the hierarchy. Their challenge would be to work out the right place to set that provider.
+- exercise: consuming multiple contexts (with both Context.Consumer and useContext)
+
+
+Requirements:
+Page with two far-reaching contexts.
+One of the contexts needs to be updated by the code.
+One of the contexts needs to work with a default value when there's no provider.
+One of the contexts needs to be used in a nested way
+One part of the page needs to use both contexts
+
+Idea:
+EelBay.
+
+A page that displays a number of products for sale, with their comments, and has a form for a user to add a new product.
+
+Features:
+- the display of each product listing is different depending on whether the current user created it or not.
+- the form for creating a new product shows a live preview of how the ad will be displayed to the current user and to other users
+
+The two contexts will be the active_user and the product_listing form
+The product_listing form will need to be updated as the user interacts with the page
+There will be a home page on the app which works for users that aren't logged in (implemented using a default value for the Context)
+The active_user context will be nested to create the preview of the product_list for different user types
+This part of the page will need to use both contexts
