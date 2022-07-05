@@ -29,7 +29,7 @@ function todaysNews(delay: number = 1500): Promise<Array<News>> {
 }
 
 // NOTE this returns a fixed set of data
-const fixedNewsItems = []
+const fixedNewsItems: Array<News> = []
 let i = 0
 while (i < 18) {
   i += 1

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState, useRef } from "react"
 import type { FC } from "react"
 import { getScore } from "./api"
 import type { Score } from "./api"

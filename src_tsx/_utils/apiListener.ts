@@ -1,7 +1,9 @@
-let liveNewsItems = []
-let liveNewsListener
+import type { News } from "./api"
 
-function startLiveNewsListener(callback) {
+let liveNewsItems: Array<News> = []
+let liveNewsListener: ReturnType<typeof setInterval>
+
+function startLiveNewsListener(callback: (newsItems: Array<News>) => any) {
   console.log("** live news listener started **")
   liveNewsListener = setInterval(() => {
     // initial listener request returns 3 news items

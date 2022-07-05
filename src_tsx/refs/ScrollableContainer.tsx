@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { forwardRef, useImperativeHandle, useRef } from "react"
 import type { FC, PropsWithChildren } from "react"
 
 export type Ref = {
@@ -6,17 +6,19 @@ export type Ref = {
 }
 
 const ScrollableContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const div = useRef<HTMLDivElement>()
+  const divRef = useRef<HTMLDivElement>(null)
 
-  const scrollTop = () =>
-    div && div.current.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-
+  const scrollTop = () => {
+    if (divRef.current) {
+      divRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }
+  }
   return (
     <div
-      ref={div}
+      ref={divRef}
       className="position-relative overflow-auto"
       style={{
         height: "60vh",
