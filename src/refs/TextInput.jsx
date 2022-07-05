@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react"
+
 const TextInput = ({ onChange, value, placeholder }) => {
   const handleChange = (event) => {
     onChange(event.target.value)

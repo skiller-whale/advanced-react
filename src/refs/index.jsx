@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useState, useRef } from "react"
 import { getScore } from "./api"
 import ScrollableContainer from "./ScrollableContainer"
 import ScoreRow from "./ScoreRow"
