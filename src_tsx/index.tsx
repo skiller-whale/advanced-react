@@ -9,7 +9,7 @@ import App from "./App"
 // import App from "./portals"
 // import App from "./suspense"
 
-const container = document.getElementById("root")
+const container = document.getElementById("root")!
 
 const root = createRoot(container)
 root.render(<App />)

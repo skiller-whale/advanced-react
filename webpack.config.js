@@ -25,6 +25,29 @@ module.exports = {
       "Access-Control-Allow-Origin": "*",
     },
     historyApiFallback: true,
+    setupMiddlewares: (middlewares, devServer) => {
+      return middlewares.map((middleware) => {
+        if (middleware.name !== "webpack-dev-middleware") {
+          return middleware
+        }
+        return async (req, res, next) => {
+          if (req.url.includes("suspense")) {
+            await new Promise((resolve) =>
+              setTimeout(resolve, req.url.includes("Mascot") ? 4000 : 2000)
+            )
+            if (req.url.includes("Blocked")) {
+              const err = new Error("Blocked")
+              err.code = 503
+              return next(err)
+            }
+          }
+          return {
+            name: middleware.name,
+            middleware: middleware.middleware(req, res, next),
+          }
+        }
+      })
+    },
   },
   devtool: "source-map",
   entry: [path.join(__dirname, `/src${isTsx ? "_tsx" : ""}/index.${language}`)],
