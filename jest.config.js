@@ -2,6 +2,7 @@ const isTsx = process.env.SKILLERWHALE_LANG === "ts"
 const lang = isTsx ? "ts" : "js"
 
 const config = {
+  testEnvironment: "jsdom",
   testEnvironmentOptions: {
     url: "http://localhost/",
   },
