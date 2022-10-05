@@ -5,7 +5,7 @@ import {
   DRIVING_LEVEL_DANGEROUS,
 } from "./constants"
 
-export function calculateDrivingLevel({ drivingScore }) {
+export const calculateDrivingLevel = ({ drivingScore }) => {
   if (drivingScore > 90) {
     return DRIVING_LEVEL_VERY_SAFE
   } else if (drivingScore >= 70) {
@@ -15,14 +15,16 @@ export function calculateDrivingLevel({ drivingScore }) {
   }
   return DRIVING_LEVEL_DANGEROUS
 }
-export function calculateDrivingScore({ distance, incidents }) {
+
+export const calculateDrivingScore = ({ distance, incidents }) => {
   const incidentsPerMile = incidents / distance
   if (incidentsPerMile > 1) {
     return 0
   }
   return Math.round(100 - 100 * incidentsPerMile)
 }
-export function calculateDrivingAssessment({ trips = [] }) {
+
+export const calculateDrivingAssessment = ({ trips }) => {
   let tripsCount = 0
   let incidentsCount = 0
   let totalDistance = 0
@@ -37,9 +39,7 @@ export function calculateDrivingAssessment({ trips = [] }) {
   })
   return {
     drivingScore,
-    drivingLevel: calculateDrivingLevel({
-      drivingScore,
-    }),
+    drivingLevel: calculateDrivingLevel({ drivingScore }),
     tripsCount,
     incidentsCount,
     totalDistance,

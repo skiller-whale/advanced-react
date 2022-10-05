@@ -1,11 +1,17 @@
 import {
+  type DrivingLevel,
   DRIVING_LEVEL_VERY_SAFE,
   DRIVING_LEVEL_SAFE,
   DRIVING_LEVEL_UNSAFE,
   DRIVING_LEVEL_DANGEROUS,
 } from "./constants"
+import { type Trip } from "./api"
 
-export function calculateDrivingLevel({ drivingScore }) {
+export const calculateDrivingLevel = ({
+  drivingScore,
+}: {
+  drivingScore: number
+}): DrivingLevel => {
   if (drivingScore > 90) {
     return DRIVING_LEVEL_VERY_SAFE
   } else if (drivingScore >= 70) {
@@ -16,7 +22,13 @@ export function calculateDrivingLevel({ drivingScore }) {
   return DRIVING_LEVEL_DANGEROUS
 }
 
-export function calculateDrivingScore({ distance, incidents }) {
+export const calculateDrivingScore = ({
+  distance,
+  incidents,
+}: {
+  distance: number
+  incidents: number
+}): number => {
   const incidentsPerMile = incidents / distance
   if (incidentsPerMile > 1) {
     return 0
@@ -24,7 +36,19 @@ export function calculateDrivingScore({ distance, incidents }) {
   return Math.round(100 - 100 * incidentsPerMile)
 }
 
-export function calculateDrivingAssessment({ trips = [] }) {
+export type DrivingAssessment = {
+  drivingScore: number
+  drivingLevel: DrivingLevel
+  tripsCount: number
+  incidentsCount: number
+  totalDistance: number
+}
+
+export const calculateDrivingAssessment = ({
+  trips,
+}: {
+  trips: Trip[]
+}): DrivingAssessment => {
   let tripsCount = 0
   let incidentsCount = 0
   let totalDistance = 0
@@ -39,9 +63,7 @@ export function calculateDrivingAssessment({ trips = [] }) {
   })
   return {
     drivingScore,
-    drivingLevel: calculateDrivingLevel({
-      drivingScore,
-    }),
+    drivingLevel: calculateDrivingLevel({ drivingScore }),
     tripsCount,
     incidentsCount,
     totalDistance,

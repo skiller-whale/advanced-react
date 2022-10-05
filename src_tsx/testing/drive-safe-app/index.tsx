@@ -1,11 +1,19 @@
-import React, { useState } from "react"
-
-import api, { Trip } from "./api"
-
+import { type FC, useEffect, useState } from "react"
+import { type Trip } from "./api"
+import * as api from "./api"
 import DrivingAssessment from "./DrivingAssessment"
 import DrivingHistory from "./DrivingHistory"
 
-const tabs = [
+type Tab = {
+  name: string
+  content: (props: {
+    trips: Trip[]
+    viewTrips: () => void
+    confirmTrip: (tripId: string) => void
+  }) => JSX.Element
+}
+
+const tabs: Tab[] = [
   {
     name: "Assessment",
     content: ({ trips, viewTrips }) => (
@@ -20,115 +28,79 @@ const tabs = [
   },
 ]
 
-type State = {
-  trips: Array<Trip>
-  loadingTrips: boolean
-  activeTabIndex: number
-}
+const App: FC = () => {
+  const [loadingTrips, setLoadingTrips] = useState(true)
+  const [trips, setTrips] = useState<Trip[]>([])
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
 
-export default class App extends React.Component<{}, State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loadingTrips: true,
-      trips: [],
-      activeTabIndex: 0,
-    }
-    this.setActiveTabIndex = this.setActiveTabIndex.bind(this)
-    this.viewTrips = this.viewTrips.bind(this)
-    this.confirmTrip = this.confirmTrip.bind(this)
+  const loadTrips = async () => {
+    const { trips } = await api.getTrips()
+    setLoadingTrips(false)
+    setTrips(trips)
   }
 
-  componentDidMount() {
-    api.getTrips().then(({ trips }) => {
-      this.setState({
-        loadingTrips: false,
-        trips,
-      })
-    })
+  useEffect(() => {
+    loadTrips()
+  }, [])
+
+  const viewTrips = (): void => {
+    setActiveTabIndex(1)
   }
 
-  setActiveTabIndex(index) {
-    this.setState({
-      activeTabIndex: index,
-    })
-  }
-
-  viewTrips() {
-    this.setState({
-      activeTabIndex: 1,
-    })
-  }
-
-  confirmTrip(tripId) {
-    this.setState((state) => {
-      const updatedTrips = state.trips.map((trip) => {
-        if (trip.id === tripId) {
-          return {
-            ...trip,
-            confirmed: true,
-          }
-        }
-        return trip
-      })
-      return {
-        ...state,
-        trips: updatedTrips,
-      }
-    })
-  }
-
-  render() {
-    const { activeTabIndex, loadingTrips, trips } = this.state
-    const { setActiveTabIndex, viewTrips, confirmTrip } = this
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a
-            className="navbar-brand mr-5"
-            href="#"
-            onClick={() => {
-              setActiveTabIndex(0)
-            }}
-          >
-            Drive Safe
-          </a>
-          <div className="navbar-collapse">
-            <ul className="navbar-nav mr-auto">
-              {tabs.map((tab, index) => {
-                const active = activeTabIndex === index ? "active" : ""
-                return (
-                  <li key={index} className={`nav-item ${active}`}>
-                    <a
-                      className="nav-link"
-                      href="#"
-                      onClick={() => {
-                        setActiveTabIndex(index)
-                      }}
-                    >
-                      {tab.name}
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </nav>
-        <div className="p-4">
-          {!!loadingTrips && <div>Loading...</div>}
-          {!loadingTrips &&
-            tabs.map((tab, index) => {
-              if (activeTabIndex === index) {
-                return (
-                  <div key={index}>
-                    {tab.content({ trips, viewTrips, confirmTrip })}
-                  </div>
-                )
-              }
-              return null
-            })}
-        </div>
-      </div>
+  const confirmTrip = (tripId: string): void => {
+    setTrips((trips) =>
+      trips.map((trip) =>
+        trip.id === tripId ? { ...trip, confirmed: true } : trip
+      )
     )
   }
+
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a
+          className="navbar-brand mr-5"
+          href="#"
+          onClick={() => {
+            setActiveTabIndex(0)
+          }}
+        >
+          Drive Safe
+        </a>
+        <div className="navbar-collapse">
+          <ul className="navbar-nav mr-auto">
+            {tabs.map((tab, index) => {
+              const active = activeTabIndex === index ? "active" : ""
+              return (
+                <li key={index} className={`nav-item ${active}`}>
+                  <a
+                    className="nav-link"
+                    href="#"
+                    onClick={() => {
+                      setActiveTabIndex(index)
+                    }}
+                  >
+                    {tab.name}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </nav>
+      <div className="p-4">
+        {!!loadingTrips && <div>Loading...</div>}
+        {!loadingTrips &&
+          tabs.map((tab, index) =>
+            activeTabIndex === index ? (
+              <div key={index}>
+                {tab.content({ trips, viewTrips, confirmTrip })}
+              </div>
+            ) : null
+          )}
+      </div>
+    </div>
+  )
 }
+
+export default App

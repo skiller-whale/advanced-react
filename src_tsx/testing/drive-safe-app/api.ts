@@ -1,6 +1,6 @@
 const API_RESPONSE_DELAY = 500
 
-function getRandomInt(min, max) {
+const getRandomInt = (min: number, max: number): number => {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
@@ -66,14 +66,9 @@ while (i < numberToAdd) {
   i++
 }
 
-export default {
-  getTrips: () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          trips,
-        })
-      }, API_RESPONSE_DELAY)
-    })
-  },
-}
+export const getTrips = (): Promise<{ trips: Trip[] }> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ trips })
+    }, API_RESPONSE_DELAY)
+  })

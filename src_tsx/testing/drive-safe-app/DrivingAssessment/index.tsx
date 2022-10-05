@@ -1,7 +1,14 @@
+import { type FC } from "react"
 import { drivingLevelDisplay } from "../constants"
 import { calculateDrivingAssessment } from "../calculations"
+import { type Trip } from "../api"
 
-export default function DrivingAssessment({ trips, viewTrips }) {
+type Props = {
+  trips: Trip[]
+  viewTrips: () => void
+}
+
+const DrivingAssessment: FC<Props> = ({ trips, viewTrips }) => {
   const {
     drivingScore,
     drivingLevel,
@@ -9,7 +16,8 @@ export default function DrivingAssessment({ trips, viewTrips }) {
     incidentsCount,
     totalDistance,
   } = calculateDrivingAssessment({ trips })
-  const { title, summary, color } = drivingLevelDisplay[drivingLevel] || {}
+  const { title, summary, color } = drivingLevelDisplay[drivingLevel]
+
   return (
     <div style={{ maxWidth: 600 }}>
       <h2 className="mb-4">
@@ -38,3 +46,5 @@ export default function DrivingAssessment({ trips, viewTrips }) {
     </div>
   )
 }
+
+export default DrivingAssessment

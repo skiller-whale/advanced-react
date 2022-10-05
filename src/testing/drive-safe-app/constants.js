@@ -2,6 +2,7 @@ export const DRIVING_LEVEL_VERY_SAFE = "DRIVING_LEVEL_VERY_SAFE"
 export const DRIVING_LEVEL_SAFE = "DRIVING_LEVEL_SAFE"
 export const DRIVING_LEVEL_UNSAFE = "DRIVING_LEVEL_UNSAFE"
 export const DRIVING_LEVEL_DANGEROUS = "DRIVING_LEVEL_DANGEROUS"
+
 export const drivingLevelDisplay = {
   [DRIVING_LEVEL_VERY_SAFE]: {
     title: "Very Safe",

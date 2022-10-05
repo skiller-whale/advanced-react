@@ -1,9 +1,11 @@
 const API_RESPONSE_DELAY = 500
-function getRandomInt(min, max) {
+
+const getRandomInt = (min, max) => {
   min = Math.ceil(min)
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
 const trips = [
   {
     id: "trip-1",
@@ -42,6 +44,7 @@ const trips = [
     confirmed: true,
   },
 ]
+
 // add a random number of additional items to the trip list
 const numberToAdd = getRandomInt(1, 4)
 let i = 0
@@ -54,14 +57,10 @@ while (i < numberToAdd) {
   })
   i++
 }
-export default {
-  getTrips: () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          trips,
-        })
-      }, API_RESPONSE_DELAY)
-    })
-  },
-}
+
+export const getTrips = () =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ trips })
+    }, API_RESPONSE_DELAY)
+  })

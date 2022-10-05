@@ -1,49 +1,36 @@
+import { type FC } from "react"
 import { calculateDrivingLevel, calculateDrivingScore } from "../calculations"
 import { drivingLevelDisplay } from "../constants"
+import { type Trip } from "../api"
 
-function TripRow({ tripNumber, trip, onConfirmTrip }) {
-  const { date, distance, incidents, tripType, confirmed } = trip
+type TripRowProps = {
+  tripNumber: number
+  trip: Trip
+  onConfirmTrip: () => void
+}
+
+const TripRow: FC<TripRowProps> = ({ tripNumber, trip, onConfirmTrip }) => {
+  const { date, distance, incidents, confirmed } = trip
   const drivingScore = calculateDrivingScore({ distance, incidents })
   const drivingLevel = calculateDrivingLevel({ drivingScore })
   const { color } = drivingLevelDisplay[drivingLevel]
-  // return (
-  //   <tr data-testid="trip-row" style={{ background: color }}>
-  //     <td>{tripNumber}</td>
-  //     <td>{date}</td>
-  //     <td>{distance}</td>
-  //     <td>{incidents}</td>
-  //     <td>{drivingScore}</td>
-  //     <td>
-  //       {confirmed ? (
-  //         "Confirmed"
-  //       ) : (
-  //         <button
-  //           type="button"
-  //           className="btn btn-dark btn-sm"
-  //           onClick={onConfirmTrip}
-  //         >
-  //           Confirm Trip
-  //         </button>
-  //       )}
-  //     </td>
-  //   </tr>
-  // )
+
+  const newStyle = true // toggle this when instructed
+  const rowStyle = { background: color }
+  const tripNumberStyle = {
+    background: color,
+    width: 30,
+    height: 30,
+    borderRadius: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+  }
+
   return (
-    <tr data-testid="trip-row">
+    <tr data-testid="trip-row" style={newStyle ? rowStyle : {}}>
       <td>
-        <div
-          style={{
-            background: color,
-            width: 30,
-            height: 30,
-            borderRadius: 30,
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-          }}
-        >
-          {tripNumber}
-        </div>
+        <div style={newStyle ? {} : tripNumberStyle}>{tripNumber}</div>
       </td>
       <td>{date}</td>
       <td>{distance}</td>
@@ -66,7 +53,12 @@ function TripRow({ tripNumber, trip, onConfirmTrip }) {
   )
 }
 
-export default function DrivingHistory({ trips, confirmTrip }) {
+type DrivingHistoryProps = {
+  trips: Trip[]
+  confirmTrip: (tripId: string) => void
+}
+
+const DrivingHistory: FC<DrivingHistoryProps> = ({ trips, confirmTrip }) => {
   return (
     <div style={{ maxWidth: 900 }}>
       <h2 className="mb-4">Your Trips</h2>
@@ -97,3 +89,5 @@ export default function DrivingHistory({ trips, confirmTrip }) {
     </div>
   )
 }
+
+export default DrivingHistory

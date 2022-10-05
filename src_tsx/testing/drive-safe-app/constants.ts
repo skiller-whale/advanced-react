@@ -3,7 +3,19 @@ export const DRIVING_LEVEL_SAFE = "DRIVING_LEVEL_SAFE"
 export const DRIVING_LEVEL_UNSAFE = "DRIVING_LEVEL_UNSAFE"
 export const DRIVING_LEVEL_DANGEROUS = "DRIVING_LEVEL_DANGEROUS"
 
-export const drivingLevelDisplay = {
+export type DrivingLevel =
+  | typeof DRIVING_LEVEL_VERY_SAFE
+  | typeof DRIVING_LEVEL_SAFE
+  | typeof DRIVING_LEVEL_UNSAFE
+  | typeof DRIVING_LEVEL_DANGEROUS
+
+type DrivingLevelDisplay = {
+  title: string
+  summary: string
+  color: string
+}
+
+export const drivingLevelDisplay: Record<DrivingLevel, DrivingLevelDisplay> = {
   [DRIVING_LEVEL_VERY_SAFE]: {
     title: "Very Safe",
     summary: "Your driving behaviour is very safe, keep up the good work!",
